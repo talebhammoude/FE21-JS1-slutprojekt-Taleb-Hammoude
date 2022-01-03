@@ -3,7 +3,7 @@ let weather = {
 
     apiKey: "0a519848631048f8abeeeea37c90ef42",
 
-    //fetch funktionen
+    //fetch funktionen för current weather
     fetchData: function (city) {
         //city används som dynamisk parameter, apiKey är definierad ovan och &lang=sv för svensk version.
         fetch(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${this.apiKey}&lang=sv`)

@@ -51,10 +51,9 @@ let weatherForecast = {
 
     showData: function (data) {
 
-
         for(let i=0; i<5; i++) {
             const { description, icon } = data.data[i].weather;
-            const {temp } = data.data[i];
+            const { temp } = data.data[i];
 
             let descDiv = document.createElement('div');
             let iconDiv = document.createElement('img');
@@ -75,8 +74,6 @@ let weatherForecast = {
             document.querySelector(".day-icon").src = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
 
         }
-        
-
         
     },
 

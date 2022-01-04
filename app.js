@@ -1,5 +1,5 @@
-// Weather objektet som innehåller variablar och funktioner
-let weather = {
+// Current Weather objektet som innehåller variablar och funktioner
+let weatherCurrent = {
 
     apiKey: "0a519848631048f8abeeeea37c90ef42",
 
@@ -22,6 +22,8 @@ let weather = {
         document.querySelector(".weather-icon").src = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
         document.querySelector(".wind-speed").innerText = "Vindhastighet: " + wind_spd + "m/s";
         document.querySelector(".fukt").innerText = "Fuktighet: " + rh + "%";
+
+        
     },
 
     //aktivera sök
@@ -32,8 +34,67 @@ let weather = {
 };
 
 
+
+
+// Forecast Weather objektet som innehåller variablar och funktioner
+let weatherForecast = {
+
+    apiKey: "0a519848631048f8abeeeea37c90ef42",
+
+    //fetch funktionen för current weather
+    fetchData: function (city) {
+        //city används som dynamisk parameter, apiKey är definierad ovan och &lang=sv för svensk version.
+        fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&key=${this.apiKey}&days=5&lang=sv`)
+        .then((response) => response.json())
+        .then((data) => this.showData(data)); //använder funktionen showData och passar datan från API:et som parameter.
+    },
+
+    showData: function (data) {
+
+
+        for(let i=0; i<5; i++) {
+            const { description, icon } = data.data[i].weather;
+            const {temp } = data.data[i];
+
+            let descDiv = document.createElement('div');
+            let iconDiv = document.createElement('img');
+            let tempDiv = document.createElement('div');
+
+            descDiv.classList.add("day-description");
+            iconDiv.classList.add("day-icon");
+            tempDiv.classList.add("day-temp");
+
+
+            document.querySelector(".weather-info-5-days").appendChild(descDiv);
+            document.querySelector(".weather-info-5-days").appendChild(iconDiv);
+            document.querySelector(".weather-info-5-days").appendChild(tempDiv);
+
+            //Lägg in värden i Html 
+            document.querySelector(".day-description").innerText = description;
+            document.querySelector(".day-temp").innerText = temp + "°C";
+            document.querySelector(".day-icon").src = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
+
+        }
+        
+
+        
+    },
+
+    //aktivera sök
+    search: function () {
+        this.fetchData(document.querySelector(".search-input").value);
+    }
+
+};
+
+
+
+
+
+
 //Sök vid click av sök-button.
 document.querySelector(".search-btn").addEventListener("click", ()=>{
-    weather.search();
+    weatherCurrent.search();
+    weatherForecast.search();
     document.querySelector(".search-input").value = "";
 });

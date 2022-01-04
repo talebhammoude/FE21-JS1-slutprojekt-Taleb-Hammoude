@@ -70,8 +70,8 @@ let weatherForecast = {
 
             //Lägg in värden i Html 
             document.querySelector(`.day-description${i}`).innerText = description;
-            document.querySelector(`.day-icon${i}`).innerText = temp + "°C";
-            document.querySelector(`.day-temp${i}`).src = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
+            document.querySelector(`.day-temp${i}`).innerText = temp + "°C";
+            document.querySelector(`.day-icon${i}`).src = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
 
         }
         

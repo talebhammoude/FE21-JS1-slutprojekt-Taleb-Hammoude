@@ -51,7 +51,8 @@ let weatherForecast = {
 
     showData: function (data) {
 
-        for(let i=0; i<5; i++) {
+        for( i=0; i<5; i++) {
+
             const { description, icon } = data.data[i].weather;
             const { temp } = data.data[i];
 
@@ -59,19 +60,18 @@ let weatherForecast = {
             let iconDiv = document.createElement('img');
             let tempDiv = document.createElement('div');
 
-            descDiv.classList.add("day-description");
-            iconDiv.classList.add("day-icon");
-            tempDiv.classList.add("day-temp");
-
-
+            descDiv.classList.add(`day-description${i}`);
+            iconDiv.classList.add(`day-icon${i}`);
+            tempDiv.classList.add(`day-temp${i}`);
+            
             document.querySelector(".weather-info-5-days").appendChild(descDiv);
             document.querySelector(".weather-info-5-days").appendChild(iconDiv);
             document.querySelector(".weather-info-5-days").appendChild(tempDiv);
 
             //Lägg in värden i Html 
-            document.querySelector(".day-description").innerText = description;
-            document.querySelector(".day-temp").innerText = temp + "°C";
-            document.querySelector(".day-icon").src = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
+            document.querySelector(`.day-description${i}`).innerText = description;
+            document.querySelector(`.day-icon${i}`).innerText = temp + "°C";
+            document.querySelector(`.day-temp${i}`).src = `https://www.weatherbit.io/static/img/icons/${icon}.png`;
 
         }
         

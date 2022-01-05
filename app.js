@@ -12,6 +12,9 @@ let weatherCurrent = {
     },
 
     showData: function (data) {
+
+        document.querySelector(".current-weather-txt").style = "block";
+
         //distructar värden från json datan för att använda det senare.
         const { description, icon } = data.data[0].weather;
         const { city_name, temp, wind_spd, rh } = data.data[0];
@@ -23,6 +26,7 @@ let weatherCurrent = {
         document.querySelector(".wind-speed").innerText = "Vindhastighet: " + wind_spd + "m/s";
         document.querySelector(".fukt").innerText = "Fuktighet: " + rh + "%";
 
+        
         
     },
 
@@ -50,6 +54,9 @@ let weatherForecast = {
     },
 
     showData: function (data) {
+
+        document.querySelector(".forecast-weather-txt").style = "block";
+
 
         for( i=0; i<5; i++) {
 

@@ -5,29 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FE21 JS1 Slutprojekt</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="search-field">
-        <input class="search-input" placeholder="Sök stad..." type="text">
-        <button class="search-btn" type="submit">Sök</button>
-    </div>
+    <div class="container">
 
-    <div class="weather-info">
-        <h2 class="current-weather-txt" style="display: none;">Vädret just nu</h2>
-        <div class="city"></div>
-        <div class="decription"></div>
-        <img class="weather-icon"></div>
-        <div class="temp"></div>
-        <div class="wind-speed"></div>
-        <div class="fukt"></div>
-    </div>
-
-
-    <div class="weather-info-5-days">
-        <h2 class="forecast-weather-txt" style="display: none;">Prognos 5 dagar</h2>
+        <div class="search-field">
+            <input class="search-input" placeholder="Sök stad..." type="text">
+            <button class="search-btn" type="submit">Sök</button>
+        </div>
         
+        <div class="weather-info">
+            <h1 class="current-weather-txt" style="display: none;">Vädret just nu</h1>
+            <div class="city"></div>
+            <div class="decription"></div>
+            <img class="weather-icon"></img>
+            <div class="temp"></div>
+            <div class="wind-speed"></div>
+            <div class="fukt"></div>
+        
+        </div>
+            
+        
+        
+        <div class="weather-info-5-days">
+            <h1 class="forecast-weather-txt" style="display: none;">Prognos 5 dagar</h1>
+        </div>
+            
+
     </div>
+
+    
+
+
    
     <script src="app.js"></script>
 </body>

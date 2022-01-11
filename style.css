@@ -4,3 +4,8 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
+
+#error {
+
+    color: red;
+}

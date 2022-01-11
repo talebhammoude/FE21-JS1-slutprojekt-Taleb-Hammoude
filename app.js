@@ -8,7 +8,11 @@ let weatherCurrent = {
         //city används som dynamisk parameter, apiKey är definierad ovan och &lang=sv för svensk version.
         fetch(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${this.apiKey}&lang=sv`)
         .then((response) => response.json())
-        .then((data) => this.showData(data)); //använder funktionen showData och passar datan från API:et som parameter.
+        .then((data) => this.showData(data)) //använder funktionen showData och passar datan från API:et som parameter.
+        .catch(function () {
+            errorFunc();  
+        });   
+         
     },
 
     showData: function (data) {
@@ -51,6 +55,7 @@ let weatherForecast = {
         fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&key=${this.apiKey}&days=5&lang=sv`)
         .then((response) => response.json())
         .then((data) => this.showData(data)); //använder funktionen showData och passar datan från API:et som parameter.
+        
     },
 
     showData: function (data) {
@@ -133,4 +138,12 @@ function loader() {
 
 function hideLoader() {
     document.querySelector("#loader").style= ("display: none");
+}
+
+
+function errorFunc () {
+    document.querySelector("#error").style= ("display: block");
+    hideLoader();
+    
+
 }
